@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Beans related to Question 1 DrawShapes Assignment-->
+    <bean id="triangle" class="com.DrawShapes.Triangle"/>
+    <bean id="square" class="com.DrawShapes.Square"/>
+    <bean id="circle" class="com.DrawShapes.Circle"/>
+    
+    <bean id="drawShape" class="com.DrawShapes.DrawShape">
+    	<constructor-arg ref="circle"/>
+    </bean>
+    
+   
+    
+    
+    <!-- Beans related to Question 2 Calculator Assignment-->
+    <bean id="service" class="com.Calculator.ServiceLayer"/>
+    <bean id="Calculator" class="com.Calculator.Calculator">
+    	<constructor-arg ref="service"/>
+    </bean>
+    
+    
+    <!-- Beans related to Question 3 Bean Assignment-->
+    <bean id="man" class="beanQuestion.Man" scope="prototype">
+    	<constructor-arg value="Jatin"/>
+    </bean>
+    
+    <bean id="woman" class="beanQuestion.Woman">
+    	<constructor-arg value="Suman"/>
+    </bean>
+    
+    <bean id="adventure" class="beanQuestion.Adventure"  init-method="setup" destroy-method="endJourney" scope="prototype">
+    
+    	<property name="man" ref="man"/>
+    	<property name="woman" ref="woman"/>
+    	<property name="man2" ref="man"/>
+    
+    </bean>
+
+</beans>
